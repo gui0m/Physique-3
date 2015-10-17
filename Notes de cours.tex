@@ -1,0 +1,581 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{amssymb}
+\usepackage[top = 2cm , bottom = 2cm, left =2cm, right = 2cm]{geometry}
+\usepackage{url}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{color}
+\usepackage{pdfpages}
+ \usepackage[version=3]{mhchem}
+
+\definecolor{bleuclair}{rgb}{0.7, 0.7, 1.0}
+
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+%%%%% REMARQUES GENERALES CONCERNANT CE FICHIER : 
+
+%%%%%% Toute personne modifiant ce fichier est priée d'indiquer son nom, ses sources et la date d'édition  (voir exemple pour Champs électromagnétiques) devant ce qu'il a produit de "nouveau"
+
+%%%%%% Quand l'attention des professeurs est requise pour - un approfondissement - une vérification - (autre) : veuillez le signaler en commentaire avec, pour commencer :  /!\ PROFESSEURS 
+
+%%%%%% Si vous désirez seulement ajouter des commentaires à ce qui a été écrit à un endroit : veuillez le signaler en commentaire avec, pour commencer : /!\ COMMENT 
+
+%%%%%% Merci de votre compréhension et faisons de ce document un réel investissement collectif! 
+
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+\title{Notes relatives au cours de Physique 3}
+\author{\textit{Collaboration étudiants-professeurs} \textbf{2015-2016}}
+\maketitle
+
+\begin{center}
+\includegraphics[height = 50pt, width = 200pt]{epl.png}
+\end{center}
+
+\tableofcontents
+
+\newpage
+
+\section{Champs électromagnétiques}  % AUTEUR :: Guillaume Van Dessel || SOURCE :: Slides || DATE :: 17.10.2015
+
+\subsection{Introduction}
+
+La première partie du cours de Physique 3 traite des champs électromagnétiques. \\
+Comme son nom le suggère, le champ électromagnétique est un \textit{\textbf{champ vectoriel}} spatial \\
+tri-dimensionnel (en toute généralité) dépendant également du \textit{temps}.  Il est la résultante d'une composante \textit{champ 
+électrique} et d'une composante \textit{champ magnétique}. 
+
+\subsection{Lois générales : formulation \textit{intégrale}}
+
+Afin de se figurer comment une telle combinaison de champs se propage dans l'espace et le temps, il est nécessaire d'aborder les grandes 
+lois de l'électricité et du magnétisme. 
+
+\subsubsection{Rappels qualitatifs}
+
+\begin{center}
+
+\begin{tabular}{|c|c|}
+
+\hline
+
+1 & Des charges électriques \textit{\textbf{immobiles}} créent un \textit{\textbf{champ électrostatique}}. \\
+\textit{propriété} & Ce champ est \textit{conservatif} et dérive d'un \textbf{potentiel scalaire} \\ 
+\textit{propriété} & \textbf{Force} sur charges électriques en mouvement et stationnaires \\
+
+\hline
+
+2 & Des courants constants\footnote{Déplacements de charges électriques à débit constant} créent un \textit{\textbf{champ magnétique\footnote{Champ magnétique \textit{d'excitation} $\vec{H}$ qui, couplé à la perméabilité magnétique de l'endroit où il vit donne le Champ magnétique d'induction $\vec{B}$}}}constant\\
+\textit{propriété} & Des charges en mouvement (accéléré ou non) créent des champs électriques se \textit{déplaçant} \\
+\textit{propriété} & \textbf{Force} sur charges électriques en mouvement uniquement \\
+
+\hline
+
+
+\end{tabular}
+
+\end{center}
+
+\subsubsection{Théorème de Gauss dans la matière}
+
+Le théorème de Gauss énonce que le flux du \textit{\textbf{champ de déplacement électrique}} \\($\vec{D} = \epsilon_{r}\epsilon_{0}\vec{E} = \epsilon \vec{E}$)
+à travers une surface \textit{fermée} vaut exactement la charge électrique comprise dans le volume qu'elle décrit dans l'espace. Cela se traduit par l'équation 
+
+\begin{equation}
+ \oint_{S} \vec{D} \cdot d\vec{s} = \int_{V} \rho dv
+ \label{GaussIntegral}
+\end{equation}
+
+\subsubsection{Absence de monopole magnétique}
+
+Cette loi traduit le fait que le champ magnétique (\textit{induit} ou d'\textit{excitation}) n'admet pas de pôle. 
+Autrement dit, chaque ligne de champ forme une \textit{courbe} fermée dans l'espace, de telle sorte que le flux 
+du champ magnétique à travers une surface \textit{fermée} soit \textbf{nul}.
+
+\begin{equation}
+ \oint_{S} \vec{B} \cdot d\vec{s} = 0
+ \label{MonoPoleIntegral}
+\end{equation}
+
+\subsubsection{Loi de Lenz-Faraday}
+
+Comme le champ électrostatique dérive d'un potentiel scalaire, par définition mathématique, son intégrale le long 
+d'une courbe \textit{fermée} dans l'space est \textbf{nulle}. % /i\ COMMENT : L'intégrale dépend uniquement du point de départ à d'arrivée, le chemin emprunté n'importe pas. 
+\textit{Cependant, si nous avons à faire à un flux magnétique dont la dérivée temporelle est non-nulle, le membre de droite de l'équation n'est plus nul!}
+
+\begin{equation}
+ \oint_{C} \vec{E} \cdot d\vec{l} = 0 \hspace{10pt} \mbox{ si } \frac{d\phi}{dt} \not = 0 \Rightarrow  \oint_{C} \vec{E} \cdot d\vec{l} = -\int_{S} \frac{\partial \vec{B}}{\partial t} \cdot d\vec{s}
+ \label{PotentielIntegral}
+\end{equation}
+
+\newpage
+
+\subsubsection{Loi d'Ampère (incomplète)}
+
+La Loi d'Ampère relie l'intégrale de contour du champ magnétique d'excitation au courant traversant la surface décrite par le contour en question. 
+Comme nous allons le voir très bientôt, cette Loi, formulée comme ci-dessous (équation 4), est \textbf{incomplète} car elle n'envisage pas tous les cas de figure.
+\begin{equation}
+ \oint_{C} \vec{H} \cdot d\vec{l} = I + ? = \int_{S} \vec{J} \cdot d\vec{s} + ? 
+ \label{AmpèreIntegral}
+\end{equation}
+
+\subsection{Analyse vectorielle}
+
+Nous avons découvert au quadrimestre passé, les concepts de \textit{rotationnel}, \textit{divergence} pour un champ vectoriel et \textit{gradient} pour un champ scalaire.
+Nous n'allons pas revenir sur ces concepts fondamentaux mais seulement rappeler deux définitions importantes qui nous permettront de construire les \textbf{lois de Maxwell}. 
+Ces dernières sont réellement le ciment de notre connaissance concernant l'électricité et ses phénomènes. \\ 
+
+\subsubsection{Divergence} 
+
+Par définition, la divergence d'un champ vectoriel $\vec{F}$ se donne par l'équation suivante : 
+
+\[ div(\vec{F}) = \nabla \cdot \vec{F} = \lim_{\Delta v \to 0} \frac{\oint_{S} \vec{F} \cdot d\vec{s}}{\Delta v} \]
+
+\[\mbox{Théorème de la divergence : } \hspace{15pt} \oint_{S} \vec{F} \cdot d\vec{s} = \int_{V} (\nabla \cdot \vec{F}) dv\]
+
+où $\Delta v$ correspond au volume \textit{infinitésimal} défini par la surface \textit{fermée} $S$.
+
+
+
+\subsubsection{Rotationnel} 
+
+Par définition, la \textit{\textbf{norme}} du vecteur rotationnel d'un champ vectoriel $\vec{F}$ se donne par l'équation suivante : 
+
+\[ || \vec{rot}(\vec{F}) ||  = \nabla \times \vec{F} = \lim_{\Delta s \to 0} \frac{\oint_{C} \vec{F} \cdot d\vec{l} }{\Delta s}\]
+
+\[\mbox{Théorème de Stokes : } \hspace{15pt} \oint_{C} \vec{F} \cdot d\vec{l} = \int_{S} (\nabla \times \vec{F}) \cdot d\vec{s}\]
+
+où $\Delta s$ correspond à la surface (aire) infinitésimale décrite par la courbe fermée $C$. \\ \\
+\textbf{NOTE : } le rotationnel est un concept inhérent à un espace tri-dimensionnel, nous pouvons le ramener à un espace de dimension moindre 
+mais au delà de 3, il perd son sens.
+
+\begin{center}
+\includegraphics[height = 130pt, width = 450pt]{DivRot1.png}
+\end{center}
+
+\newpage
+
+\subsubsection{Propriétés des opérateurs différentiels}
+
+Dans ce paragraphe, nous rappelons diverses propriétés des opérateurs différentiels que nous avons étudiées au second quadrimestre. 
+\\  
+
+\textit{Le rotationnel d'un champ vectoriel dérivant d'un potentiel scalaire est le champ "nul".} 
+
+\[\nabla \times \nabla V = \vec{0} \] 
+
+\textbf{NOTE : } Le rotationnel du champ électrostatique défini par $\vec{E} = -\nabla V$ est donc par conséquent nul!  \\ 
+
+\textit{La divergence d'un champ vectoriel rotationnel est  "nulle".}  
+
+\[\nabla \cdot (\nabla \times \vec{A})  = 0 \]
+
+\subsection{Equations de Maxwell}
+Désormais, nous avons toutes les informations pour commencer à compléter les équations de Maxwell \footnote{Enlever les intégrales revient à dire : \textit{\textbf{localement}}, l'équation est valable!}. 
+Seule la Loi d'Ampère nécessitera une légère modification à la fin. \\
+
+\begin{center}
+
+\begin{tabular}{|c|c|}
+
+\hline
+
+1 & L'équation (1) devient : $ \oint_{S} \vec{D} \cdot d\vec{s}  =  \int_{V} (\nabla \cdot \vec{D} ) dv =  \int_{V} \rho dv$ \\  
+- & $\Rightarrow \forall  \hspace{3pt} \mbox{ vol infinitésimal} \hspace{5pt} (\nabla \cdot \vec{D} ) = \rho$  \\
+
+\hline
+
+2 & L'équation (2) devient : $ \oint_{S} \vec{B} \cdot d\vec{s}  =  \int_{V} (\nabla \cdot \vec{B} ) dv =  \int_{V} 0 dv$ \\ 
+- & $\Rightarrow \forall  \hspace{3pt} \mbox{ vol infinitésimal} \hspace{5pt} (\nabla \cdot \vec{B} ) = 0 $ \\
+
+\hline
+
+3 & L'équation (3) devient : $   \oint_{C} \vec{E} \cdot d\vec{l} = \int_{S} (\nabla \times \vec{E}) d\vec{s}= -\int_{S} \frac{\partial \vec{B}}{\partial t} \cdot d\vec{s}$ \\  
+- &$ \Rightarrow \forall  \hspace{3pt} \mbox{ surf infinitésimale} \hspace{5pt} (\nabla \times \vec{E} ) = -\frac{\partial \vec{B}}{\partial t}$\\
+
+\hline
+
+\end{tabular}
+
+\end{center}
+
+\subsubsection{Terme manquant de la loi d'Ampère}
+
+Nous allons ici montrer l'\textit{incohérence} de la loi d'Ampère pour certains cas de figure. \\
+Prenons par exemple  le cas d'un circuit RC basique. Nous branchons en série une résistance $\mathcal{R}$ (ne joue pas de rôle particulier mais permet de formaliser les choses) et un condensateur plan $\mathcal{C}$ à une source de tension $\mathcal{V}$. Un courant $I_{c}(t)$ va naitre depuis la source de tension. Il passe à travers la résistance et atteint la borne \textbf{positive}\footnote{Nous prenons la convention d'un courant de charges positives} du condensateur. Là, les particules sont théoriquement stoppées car le diélectrique présent entre les deux plaques assure une isolation électrique entre ces deux dernières.\footnote{Jusqu'à une certaine tension de claquage évidemment} Apparait alors une répulsion électrostatique de l'autre côté du condensateur plan  et un même nombre de particules, chargées positivement elles aussi, quitte la borne \textbf{négative} \footnote{Négative car au fur et à mesure, une polarité négative s'installe étant donné que les particules chargées positivement quittent la paroi}. Si nous appliquons la loi d'Ampère sous forme intégrale en prenant en compte le vecteur densité de courant $\vec{J}$ et une surface définie par un cercle autour du conducteur électrique par lequel transite le courant total $I_{c}(t)$, nous avons alors 
+
+\[  \oint_{C} \vec{H} \cdot d\vec{l} = I_{c}(t) = \int_{S} \vec{J} \cdot d\vec{s} \]
+
+\newpage
+
+Cependant, par la loi d'Ampère, nous pouvons prendre \textit{n'importe quelle surface définie par ce même cercle, le résultat devrait être \textbf{identique}}. \\
+Tenons dès lors compte de ce même cercle avec le même circuit mais en changeant la surface considérée pour l'application de l'intégrale de surface de $\vec{J}$. 
+Prenons désormais une demi-sphère de cercle principal le cercle autour du conducteur et englobant la borne \textbf{positive} du condensateur. La surface de cette demi-sphère sert
+à l'intégration de $\vec{J}$. Nous avons : 
+
+\[  \oint_{C} \vec{H} \cdot d\vec{l} =  \int_{S} \vec{J} \cdot d\vec{s} = I_{out}(t)\] 
+
+où $I_{out}(t)$ représente le courant sortant de la borne \textbf{positive} du condensateur vers l'autre borne. 
+Il est évidemment nul, par définition! Dès lors, nous sommes confrontés à une contradiction : $I_{c}(t) = I_{out}(t) = 0?$ 
+\\ 
+
+\begin{center}
+\includegraphics[height = 200pt, width = 400pt]{Ampere.png}
+\end{center}
+
+Cette contradiction peut être réglée par le développement suivant tiré des slides :
+\[I_{c}(t) = \int_{S} \vec{J} \cdot d\vec{s} = -\frac{dQ_{out}(t)}{dt} = - \int \frac{d \sigma(t)}{dt} ds\] 
+où $Q_{out}$ représente la charge de la borne \textbf{négative} du condensateur par où le courant $I_{c}(t)$ est "restitué". \\ 
+
+Comme nous avons pour un condensateur plan les relations suivantes\footnote{Certaines lettres représentent les normes de vecteurs qui leurs sont associés : Ex : E = || $\vec{E}$ ||} 
+
+\[ E \simeq \frac{V}{d} = \frac{Q}{Cd} = \frac{Qd}{\epsilon S d} = \frac{\sigma}{\epsilon} \Rightarrow \frac{\partial E}{\partial t} = \frac{1}{\epsilon} \frac{\partial \sigma}{\partial t} \]
+où $d,V,Q,C,S,\sigma,E$ sont respectivement pour le condensateur la distance entre les deux plaques, la différence de potentiel électrique entre les deux plaques, la charge en valeur absolue de chacune des plaques, 
+la capacité, la surface d'une des deux plaques, la densité de charge par plaque et le champ électrique entre les deux plaques. \\ 
+Nous pouvons maintenant écrire :
+
+\[ I_{c}(t) = \int_{S} \vec{J} \cdot d\vec{s} = -\int_{SurfOut}( \epsilon \frac{\partial \vec{E}}{\partial t} )\cdot d\vec{s} = - \int_{SurfOut} (\frac{\partial \vec{D}}{\partial t}) \cdot d\vec{s}  =  \int_{SurfOut} \vec{J}_{D} \cdot d\vec{s}\]
+où $SurfOut$ représente la surface de la plaque associée à la borne \textbf{négative} du condensateur .
+
+\newpage 
+
+Entre les deux plaques du condensateur, nous pouvons donc observer une \textit{variation} du champ électrique au cours du temps. Cela implique en réalité une variation de champ magnétique par la même occasion! \\ \\
+Posons alors que le terme manquant à notre loi d'Ampère soit $\frac{\partial \vec{D}}{\partial t}$. Ce n'est pas aberrant\footnote{Oui, il y a bien un référence à notre fameux professeur de Chimie-Physique 2 : Mr \textit{Jeanmart} ;-)} ! \\
+En effet, ce terme est en quelque sorte \textit{relié} à une variation de champ magnétique alors que \\le champ magnétique apparait dans l'intégrale du terme de gauche de la loi d'Ampère. \\ \\
+
+Nous aurions donc par le théorème de Stokes : 
+
+\[ \oint_{C} \vec{H} \cdot d\vec{l} = \int_{S} (\vec{J} +\frac{\partial \vec{D}}{\partial t}) \cdot d\vec{s} \]
+\[ \Rightarrow \forall  \hspace{3pt} \mbox{ surf infinitésimale} \hspace{5pt} (\nabla \times \vec{H} ) = \vec{J} + \frac{\partial \vec{D}}{\partial t}\]
+
+De plus, par la propriété des opérateurs différentiels qui dit que $div(\vec{rot}\vec{F}) = 0$, nous pouvons écrire : 
+
+\[ \nabla \cdot (\vec{J} + \frac{\partial \vec{D}}{\partial t}) = 0 \Rightarrow \nabla \cdot \vec{J} = - \nabla \cdot \frac{\partial \vec{D}}{\partial t} = - \frac{\partial \rho}{\partial t}\]
+
+ce qui n'est pas aberrant non plus! Nous avons d'un côté de l'équation, un terme exprimant une \textit{sorte de somme de courants sortant en un endroit de l'espace} ($\nabla \cdot \vec{J}$) et de l'autre l'expression de l'\textit{évolution de la densité de charge en cet endroit} ($- \frac{\partial \rho}{\partial t}$). Le signe "-" est tout à fait justifié. Une manière de s'en convaincre est la suivante : si nous avons des courants \textit{positifs} et bien la densité de charge diminuera mais le signe "-" donnera un terme doublement négatif donc \textit{positif}.
+
+\subsection{Expression générale du champ électrique}
+
+Cette sous-section admet un objectif purement théorique. En effet, elle vise à exprimer, sur base de nos constats, le champ électrique de manière formelle. 
+Repartons dès lors de la \textit{loi de Lenz-Faraday} écrite sous forme \textit{différentielle}.
+Nous pouvons définir un \textit{\textbf{potentiel vecteur}} $\vec{A}$ tel que $\nabla \times \vec{A} = \vec{B}$. \footnote{Cette affirmation est vraie pour tout champ vectoriel $\vec{B}$ \textit{régulier} et de \textit{divergence nulle} sur un domaine \textit{ouvert et étoilé}.} Dès lors, nous pouvons écrire 
+
+\[\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t} = -\frac{\partial (\nabla \times \vec{A})}{\partial t} = - \nabla \times \frac{\partial \vec{A}}{\partial t} \]
+\[\nabla \times (\vec{E} + \frac{\partial \vec{A}}{\partial t}) = \vec{0} \]
+
+Ce qui veut dire, par la propriété différentielle $\vec{rot}(grad$ $V) = \vec{0}$ que $(\vec{E} + \frac{\partial \vec{A}}{\partial t})$ dérive \\d'un potentiel scalaire.
+Nous supposons alors qu'il s'agit bien du potentiel électrique $\mathcal{V}$. \\Nous spécifions alors l'équation finale exprimant $\vec{E}$ : 
+
+\[(\vec{E} + \frac{\partial \vec{A}}{\partial t}) = - \nabla \mathcal{V} \Rightarrow \vec{E} = - (\nabla \mathcal{V} + \frac{\partial \vec{A}}{\partial t}) \]
+ 
+ 
+ \newpage
+ 
+ \subsection{Conditions aux interfaces}
+ 
+ Les lois de Maxwell gouvernent aussi la continuité des champs électromagnétiques aux interfaces entre deux milieux aux propriétés électromagnétiques différentes. \\
+ \textit{\textbf{En absence de charges et de courants de surface}} à l'interface entre ces deux milieux : 
+ 
+ \begin{center}
+ 
+ \begin{tabular}{|ccc|}
+ 
+ \hline
+ 
+ $\vec{D}_{1,n} $ & = & $\vec{D}_{2,n} $ \\ 
+ 
+ $\vec{B}_{1,n} $ & = & $\vec{B}_{2,n} $ \\ 
+ 
+ $\vec{E}_{1,t} $ & = & $\vec{E}_{2,t} $ \\ 
+ 
+ $\vec{H}_{1,t} $ & = & $\vec{H}_{2,t} $ \\ 
+ 
+ \hline
+ 
+ \end{tabular}
+ 
+ %%%%% /!\ PROFESSEURS : Puisque D et E et B et H sont, dans notre théorie, égaux à une constante de proportionnalité près. Pourquoi dans le cas du déplacement électrique et de 
+ %%%%% l'induction magnétique impose t'on la continuité de la composante normale à l'interface alors qu'avec le champ électrique et l'excitation magnétique ce sont les composantes tangentielles qui
+ %%%%% requièrent la continuité ? Merci d'avance. 
+ 
+ \includegraphics[height = 150pt, width = 400pt]{milieux.png} 
+ 
+ \end{center}
+ 
+ \textbf{NOTE : } Il y a deux directions $\hat{t}$ car en réalité quand nous parlons de direction tangentielle à l'interface (Ex : $\vec{H}_{1,t}$), 
+ nous voulons plutôt signifier: pour la partie tangentielle à l'interface, la condition de continuité s'applique. Mais comme à la surface de l'interface il existe un plan entier admettant 
+ des directions tangentielles, nous devons donc rajouter une deuxième dimension avec le second vecteur unitaire $\hat{t}$ pointant vers le lecteur.
+ 
+ \subsection{Résumé (slide)}
+ 
+ \includegraphics[height = 300pt, width = 450pt]{CM1.png}
+
+\newpage
+
+\section{Ondes électromagnétiques}
+
+%%%%% /!\ PROFESSEURS : Quid des singularités pour l'espace? Nous parlons d'un espace vide de charges et de courants en ce qui concerne les ondes EM mais pourquoi ? 
+%%%%% Comment se figurer un tel espace? Aussi, il semble que les ondes EM se propagent très bien malgré la présence de charges ou de courants?  ==>> CLARIFICATION NECESSAIRE
+
+Dans cette section, nous allons aborder une partie primordiale du cours qui concerne les ondes électromagnétiques. \\
+\textit{Qu'est ce qu'une onde électromagnétique}? Nous pouvons définir une onde EM comme la \textbf{propagation d'un signal} à travers l'espace; 
+ce signal correspond à une \textbf{\textit{variation couplée}} \\d'un champ électrique et d'un champ magnétique.  Ce signal se transmet à une vitesse qui est propre au milieu traversé comme nous le verrons à la section suivante. \\ \\
+Pour l'instant, nous allons partir des équations de Maxwell pour aboutir sur l'équation\\ définissant les ondes EM. Pour rester relativement global tout en simplifiant parfois les choses, nous approcherons le problème de manière générale et traitons ensuite en profondeur des cas particuliers. 
+\footnote{Théorie provenant conjointement des slides et de \textit{wikipédia} : url \url{https://fr.wikipedia.org/wiki/Établissement_de_l\%27équation_de_propagation_à_partir_des_équations_de_Maxwell}}
+
+\subsection{Formulation générale et équation d'Alembert}
+
+\subsubsection{Notions et notations}
+
+Cette sous-section vise à introduire les notions mathématiques et physiques dont nous aurons besoin afin d'arriver à nos fins. 
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|}
+
+\hline
+
+1 & champ électrique & $\vec{E}(x,y,z,t) = E_{x}(x,y,z,t) \hat{x} + E_{y}(x,y,z,t) \hat{y} + E_{z}(x,y,z,t) \hat{z}$ \\
+
+\hline
+
+2 & champ magnétique d'excitation &  $\vec{H}(x,y,z,t) = H_{x}(x,y,z,t) \hat{x} + H_{y}(x,y,z,t) \hat{y} + H_{z}(x,y,z,t) \hat{z}$ \\
+
+\hline 
+
+3 & \textit{\textbf{Laplacien}} vectoriel & $\Delta \vec{R} = \nabla^{2}(R_{x}(x,y,z,t) \hat{x} + R_{y}(x,y,z,t) \hat{y} + R_{z}(x,y,z,t) \hat{z}) $\\
+
+\hline
+
+4 & propriété & $\nabla \times (\nabla \times \vec{R}) = \nabla(\nabla \cdot \vec{R}) - \Delta \vec{E} $\\
+
+\hline
+
+5 & Equation (1) \textit{\textbf{Maxwell}} & $\nabla \cdot \vec{E} = \frac{\rho}{\epsilon}$ \\
+
+
+6 & Equation (3) \textit{\textbf{Maxwell}} & $\nabla \times \vec{E} = - \mu \frac{\partial \vec{H}}{\partial t}$ \\
+
+
+7 & Equation (4) \textit{\textbf{Maxwell}} & $\nabla \times \vec{H} =  \vec{J} + \epsilon \frac{\partial \vec{E}}{\partial t}$ \\
+
+\hline
+
+\end{tabular}
+
+\end{center}
+
+\subsubsection{Développement par combinaison}
+
+Maintenant que nous avons introduit les différentes données de notre développement, nous pouvons commencer à commencer à combiner les équations. 
+Si nous dérivons la quatrième équation de Maxwell par rapport au temps, nous pouvons écrire\footnote{Grâce au théorème de \textbf{Schwarz}.} 
+
+\[ \frac{\partial (\nabla \times \vec{H})}{\partial t} = \nabla \times \frac{\partial \vec{H}}{\partial t} = \frac{\partial(\vec{J} + \epsilon \frac{\partial \vec{E}}{\partial t})}{\partial t} \]
+
+Nous nous rendons rapidement compte que cette dérivée partielle peut également faire apparaitre l'équation (3) de Maxwell : 
+
+\[ \nabla \times \frac{\partial \vec{H}}{\partial t} = -\frac{1}{\mu}( \nabla \times (\nabla \times \vec{E}))\]
+
+En recombinant rapidement ces deux équations, nous pouvons mettre en exergue la relation suivante : 
+
+\[\mu(\frac{\partial \vec{J}}{\partial t} + \epsilon \frac{\partial^{2} \vec{E}}{\partial t^{2}}) = \nabla \times (\nabla \times \vec{E})\]
+
+\newpage
+
+Etant donnée la propriété\footnote{Que nous n'allons pas démontrer car cette démonstration, \textit{triviale}, sort du cadre du cours.} (4 ème entrée du tableau) concernant le rotationnel du rotationnel, 
+nous pouvons écrire la dernière équation sous une forme ne faisant plus intervenir le rotationnel : 
+
+\[ \Delta \vec{E} - \mu \epsilon  \frac{\partial^{2} \vec{E}}{\partial t^{2}} = \mu \frac{\partial \vec{J}}{\partial t} + \nabla(\nabla \cdot \vec{E}) \]
+
+La première équation de Maxwell nous permet d'affiner notre équation d'onde en jouant avec les densités de charge : 
+
+\[ \Delta \vec{E} - \mu \epsilon  \frac{\partial^{2} \vec{E}}{\partial t^{2}} = \mu \frac{\partial \vec{J}}{\partial t} + \frac{\nabla \rho}{\epsilon} \]
+
+\subsubsection{Cas particulier des conducteurs Ohmiques}
+
+Pour les \textit{conducteurs Ohmiques}, la loi d'\textit{Ohm} lie le vecteur densité de courant au champ électrique. \\
+Cette dernière s'écrit de la manière suivante : 
+
+\[\vec{J} = \sigma_{\Omega} \vec{E} \]
+
+où $\sigma_{\Omega}$ représente la \textit{conductivité électrique}.\footnote{L'inverse de la \textit{résistivité}.} En introduisant ceci dans la dernière équation et en considérant que la
+\textit{densité de charge} reste \textit{constante} 
+
+\[ \Delta \vec{E} - \mu \epsilon  \frac{\partial^{2} \vec{E}}{\partial t^{2}} = \mu \sigma_{\Omega} \frac{\partial \vec{E}}{\partial t} \]
+Nous allons voir plus loin ce que cela représente vraiment mais voici l'\textit{impédance caractéristique} du système en $\vec{E},\vec{H}$ : 
+
+\[ \frac{|| \vec{E} ||}{|| \vec{H} ||} =  \frac{E}{H} =\sqrt{\frac{\mu}{\sqrt{\epsilon(1+\frac{\sigma_{\Omega}^{2}}{\epsilon^{2} \omega^{2}})}}}\]
+
+\subsubsection{Cas particulier du vide (3D)} 
+
+Dans le \textit{cas particulier du \textbf{vide}}, nous avons à faire avec une \textit{densité de charge} supposée \textit{constante} ainsi que des \textit{densités de courant} supposées \textit{nulles} également.
+($\epsilon = \epsilon_{0}$ et $\mu = \mu_{0}$)
+
+\[ \Delta \vec{E} = \mu \epsilon  \frac{\partial^{2} \vec{E}}{\partial t^{2}} = \mu_{0} \epsilon_{0}  \frac{\partial^{2} \vec{E}}{\partial t^{2}} =\frac{1}{c^{2}} \frac{\partial^{2} \vec{E}}{\partial t^{2}} \]
+
+où $c^{2}$ est la \textit{vitesse de la lumière} au carré ($c = 299 792 458 [m/s]$).
+
+\begin{center}
+\includegraphics[height = 100pt, width = 300pt]{ondeEM.png}
+\end{center}
+
+\newpage
+
+\subsubsection{Cas particulier du vide (1D) : equations d'Alembert}
+
+Nous allons traiter ici du \textit{cas particulier du \textbf{vide}} en une seule dimension spatiale.  \\
+C'est à dire que nous allons considérer que le champ électrique ne dépend que d'une seule variable spatiale et le temps et pointe dans une seule direction (qui n'est pas celle de \\la variable pour éviter la confusion par après).
+Nous écrivons alors $\vec{E}(x,y,z,t) \Rightarrow \vec{E_{y}}(x,t)$. \\Il en est de même pour le champ magnétique d'excitation (ou d'induction) nous considérons qu'il est 
+\textit{orthogonal} au champ électrique et dépend aussi de $x$ et $t$ seulement ; $\vec{H}(x,y,z,t) \Rightarrow \vec{H_{z}}(x,t)$. \\ 
+
+
+-Soit nous repartons de ce que nous avons déjà fait pour le cas général, l'équation d'onde est alors immédiate. \\
+En effet, en 1D, le \textbf{Laplacien} vectoriel de $\vec{E}$ donne simplement sa dérivée partielle seconde en son unique variable
+spatiale : 
+\[ \Delta \vec{E} = \mu_{0} \epsilon_{0}  \frac{\partial^{2} \vec{E}}{\partial t^{2}} \Rightarrow \frac{\partial^{2} \vec{E} }{\partial t} = \frac{1}{c^{2}}  \frac{\partial^{2} \vec{E}}{\partial t^{2}}\]
+qui se résout de manière \textit{scalaire} pour la direction unitaire de la variable ($y$ par exemple ici) : 
+\[\frac{\partial^{2} E_{y}}{\partial x^{2}} = \frac{1}{c^{2}}  \frac{\partial^{2} E_{y}}{\partial t^{2}}\]
+
+
+-Soit nous repartons de zéro et adoptons une méthode plus \textit{faible} mathématiquement parlant et faisons les hypothèses suivantes. \\ \\
+Nous admettrons pour ce qui suit que la matrice \textit{Hessienne} des uniques fonctions scalaires liées à $\vec{E}$ et $\vec{H}$ soit symétrique. 
+Plus particulièrement, nous pouvons imposer que ces fonctions soient de classe $\mathcal{C}^{2}$ ce qui vérifie la condition sur la \textit{Hessienne}. \\ 
+
+Nous pouvons dès lors écrire, tout en se basant sur les équations de Maxwell : 
+
+\[\nabla \times \vec{E} = -\mu_{0} \frac{\partial \vec{H}}{\partial t} = (\frac{\partial E_{z}}{\partial y} - \frac{\partial E_{y}}{\partial z})\hat{x} +   (\frac{\partial E_{x}}{\partial z} - \frac{\partial E_{z}}{\partial x})\hat{y} +
+ (\frac{\partial E_{y}}{\partial x} - \frac{\partial E_{x}}{\partial y})\hat{z} = \frac{\partial E_{y}}{\partial x} \hat{z}
+\]
+
+\[\nabla \times \vec{H} = \epsilon_{0} \frac{\partial \vec{E}}{\partial t} = (\frac{\partial H_{z}}{\partial y} - \frac{\partial H_{y}}{\partial z})\hat{x} +   (\frac{\partial H_{x}}{\partial z} - \frac{\partial H_{z}}{\partial x})\hat{y} +
+ (\frac{\partial H_{y}}{\partial x} - \frac{\partial H_{x}}{\partial y})\hat{z} = -\frac{\partial H_{z}}{\partial x} \hat{y}
+\]
+
+Nous possédons alors un système d'EDP linéaires couplées deux à deux de premier ordre. \\
+La résolution de ce genre de système est un problème typique lié aux \textit{équations aux dérivées partielles} et est abordé dans le cours
+de mathématiques 3. Nous allons ici transformer \\ce système en deux EDP linéaires de second ordre dont la résolution est semblable. \\
+Nous pouvons dériver la première équation ci-dessus par rapport aux $x$ et la seconde par rapport au temps $t$ : 
+
+\[  \frac{\partial^{2} \vec{H}}{\partial x \partial t} = -\frac{1}{\mu_{0}} \frac{\partial^{2} E_{y}}{\partial x^{2}} \hat{z}\]
+\[  \frac{\partial^{2} H_{z}}{\partial t \partial x} \hat{y} = - \epsilon_{0} \frac{\partial^{2} \vec{E}}{\partial t^{2}} \]
+
+Comme les dérivées partielles secondes sont \textit{croisées} et si nous travaillons en termes de \textbf{\textit{normes}} :
+
+\[\frac{\partial^{2} E_{y}}{\partial x^{2}} = \frac{1}{c^{2}}  \frac{\partial^{2} E_{y}}{\partial t^{2}} \hspace{10pt} \mbox{||} \hspace{10pt} \frac{\partial^{2} H_{z}}{\partial x^{2}} = \frac{1}{c^{2}}  \frac{\partial^{2} H_{z}}{\partial t^{2}}\]
+
+\newpage
+
+\textit{Les EPD de second ordre linéaires homogènes en 1D (et temps) de type hyperbolique} \\admettent une solution générale du type\footnote{A nouveau, se référer au cours de Mathématiques 3}  : 
+$ \xi(x,t) = \frac{1}{2}(f(x-ct)+f(x+ct)) $. \\ 
+Dans le cas d'ondes, nous travaillerons souvent avec des fonctions $f$ sinusoïdales admettant parfois un déphasage $\phi$ çà et là. 
+ 
+
+\subsubsection{Propriétés des EDP linéaires couplées de premier ordre (1D et temps)}
+
+De manière tout à fait générale, si deux grandeurs \textit{scalaires} A et B dépendant d'une variable temporelle et une variable spatiale sont 
+liées par des équations de type 
+
+\[\frac{\partial A}{\partial x} = -\alpha \frac{\partial B}{\partial t}\]
+
+\[\frac{\partial A}{\partial t} = -\beta \frac{\partial B}{\partial x}\]
+
+elles \textbf{obéissent toutes deux à une même équation d'onde de type} : $\frac{1}{c^{2}} \frac{\partial^{2} A,B}{\partial t^{2}} = \frac{\partial^{2} A,B}{\partial t^{2}}$. 
+Le paramètre $c$ représente toujours la \textit{vitesse} de propagation de la grandeur scalaire et vaut : $c = \sqrt{\frac{\beta}{\alpha}}$. 
+Le rapport entre ces deux grandeurs est nommé \textit{impédance caractéristique} et vaut quant à elle : $\mathcal{Z} = \sqrt{\alpha\beta}$.\footnote{Les grands voyageurs parmi vous auront immédiatement reconnu la fameuse enseigne grecque :\\ le supermarché low-cost AlphaBeta}\\ 
+
+Nous pouvons prouver l'existence d'un tel $\mathcal{Z}$ comme marqué dans les slides. Soient donc deux solutions à l'équation d'onde et aux équations couplées données par les expressions suivantes :
+
+\[S_{1}(x,t) = \mathcal{F}(x-ct) + \mathcal{F}(x+ct)\]
+\[S_{2}(x,t) = \mathcal{G}(x-ct) + \mathcal{G}(x+ct)\]
+
+Si nous posons $w = x-ct$ et $u = x+ct$ nous pouvons écrire grâce aux équations couplées : 
+
+\[\frac{\partial S_{1}}{\partial x} = -\alpha \frac{\partial S_{2}}{\partial t} \Leftrightarrow \frac{\partial \mathcal{F}(w)}{\partial w}\frac{\partial w}{\partial x} + \frac{\partial \mathcal{F}(u)}{\partial u}\frac{\partial u}{\partial x} 
+= -\alpha (\frac{\partial \mathcal{G}(w)}{\partial w}\frac{\partial w}{\partial t} + \frac{\partial \mathcal{G}(u)}{\partial u}\frac{\partial u}{\partial t})\]
+
+\[\frac{\partial S_{1}}{\partial t} = -\beta \frac{\partial S_{2}}{\partial x} \Leftrightarrow \frac{\partial \mathcal{F}(w)}{\partial w}\frac{\partial w}{\partial t} + \frac{\partial \mathcal{F}(u)}{\partial u}\frac{\partial u}{\partial t} 
+= -\beta (\frac{\partial \mathcal{G}(w)}{\partial w}\frac{\partial w}{\partial x} + \frac{\partial \mathcal{G}(u)}{\partial u}\frac{\partial u}{\partial x})\]
+
+En simplifiant les équations : 
+
+\begin{equation}
+  \frac{\partial \mathcal{F}(w)}{\partial w} + \frac{\partial \mathcal{F}(u)}{\partial u}
+= -\alpha (-c \frac{\partial \mathcal{G}(w)}{\partial w} + c \frac{\partial \mathcal{G}(u)}{\partial u}) \Rightarrow -\alpha c (-\frac{\partial \mathcal{G}(w)}{\partial w} +\frac{\partial \mathcal{G}(u)}{\partial u}) 
+\end{equation}
+
+\begin{equation}
+  -c \frac{\partial \mathcal{F}(w)}{\partial w} + c \frac{\partial \mathcal{F}(u)}{\partial u}
+= -\beta (\frac{\partial \mathcal{G}(w)}{\partial w} + \frac{\partial \mathcal{G}(u)}{\partial u}) \Rightarrow -\frac{\partial \mathcal{F}(w)}{\partial w} + \frac{\partial \mathcal{F}(u)}{\partial u}
+= -\frac{\beta}{c} (\frac{\partial \mathcal{G}(w)}{\partial w} + \frac{\partial \mathcal{G}(u)}{\partial u})
+\end{equation}
+En additionnant les équations (5) et (6), et en définissant $\mathcal{Z} = \frac{\beta}{c} = \alpha c$nous obtenons : 
+
+\begin{equation}
+ \frac{\partial \mathcal{F}(u)}{\partial u} =  \mathcal{Z} \frac{\mathcal{G}(u)}{\partial u}
+\end{equation}
+
+Ce qui donne, après intégration (le résultat est exactement symétrique pour le cas $\mathcal{F}(w), \mathcal{G}(w)$) 
+
+\[\mathcal{F}(u) = \mathcal{Z} \cdot \mathcal{G}(u) + \mathcal{K}\]
+
+Si nous considérons des \textbf{phénomènes physiques} de \textit{propagation}, la constante $\mathcal{K}$ est tout simplement nulle car 
+à l'origine, la propagation n'a pas encore eu lieu. 
+
+\newpage
+
+Etant donnée la symétrie des équations, nous pouvons tirer la même conclusion quant aux grandeurs $\mathcal{S}_{1},\mathcal{S}_{2}$. 
+Immédiatement, il vient que l'\textit{impédance caractéristique} d'une onde\\ électromagnétique en considérant le vecteur $\vec{J}$ nul vaut 
+$\mathcal{Z} = \sqrt{\frac{\mu}{\epsilon}} \simeq120 \pi \simeq 377 [\Omega] $. 
+
+\subsubsection{Représentation du cas particulier 1D}
+
+Etant donné que nous avons pu caractériser l'équation d'onde du cas particulier et en tirer certaines conclusions, 
+voici donc la forme générale du champ électrique d'une \textit{onde EM plane monochromatique} (\textit{polarisée linéairement}, nous y reviendrons).
+
+\[\vec{E}(x,y,z,t) \Rightarrow \vec{E}_{y}(x,t) = \xi sin(\omega t - k x + \phi) \hat{y} \]
+où $\xi,\omega,t,k,x,\phi$ sont respectivement l'élongation maximale en chaque point de l'espace, la \textit{pulsation} (la fréquence  vaut $f = \frac{w}{2 \pi} = \frac{2\pi}{T}$ où $T$ 
+est la période du signal), le temps, le nombre d'onde ($k = \frac{2\pi}{\lambda}$ où $\lambda$ est la longueur d'onde), la position sur l'axe des X, le déphasage  du champ électrique. 
+
+\includegraphics[height = 250pt, width = 450pt]{onde.png}
+
+\textit{\textbf{Représentation d'une onde EM plane monochromatique polarisée linéairement ($\vec{E}$ vers $\hat{x}$).}}
+
+\subsubsection{Intensité d'une onde EM}  %%%%% /!\ PROFESSEURS : Avez-vous une démonstration plus complète que les slides quant à l'intensité d'une onde EM?
+Nous n'avons malheureusement pas trouvé de démonstration convaincante à ce sujet. \\
+Pour rappel, nous définissons que l'\textit{intensité maximale} d'une onde EM, c'est à dire 
+le produit de sa densité d'énergie maximale par sa vitesse, vaut 
+\[I_{max} = \epsilon c E_{max}^{2} = \sqrt{\frac{\epsilon}{\mu}}E_{max}^{2} = \sqrt{\frac{\mu}{\epsilon}}H_{max}^{2} = E_{max} H_{max} \hspace{5pt} [W/m^{2}]\]
+
+Etant donné que la moyenne d'un sinus au carré (car $\vec{E}$ et $\vec{H}$ sont très souvent exprimés de cette manière) vaut $\frac{1}{2}$
+
+\[I_{moy} = \epsilon c \frac{E_{max}^{2}}{2} = \sqrt{\frac{\epsilon}{\mu}}\frac{E_{max}^{2}}{2} = \sqrt{\frac{\mu}{\epsilon}}\frac{H_{max}^{2}}{2} = \frac{E_{max} H_{max}}{2} \hspace{5pt} [J/m^{2}]\] 
+
+\newpage
+
+\section{Polarisation, réflexion, réfraction}
+
+\section{Annexe}
+
+
+\subsection{Remerciements}
+
+Ce document a été réalisé à l'issue du premier \textit{comité de quadrimestre 2015} dans l'optique de créer un support de cours 
+davantage \textbf{formel} et \textbf{complet} qui puisse aider les étudiants à approfondir leur compréhension de la matière. \\ \\
+Il a été décidé qu'une collaboration étroite entre les étudiants et les professeurs du cours de Physique 3 soit établie afin de rendre ce document 
+le plus \textit{valable} possible. Ce document est par conséquent modifiable par les étudiants et les professeurs; ces derniers vérifieront de temps à autre 
+son contenu et ajouteront des notes si nécessaire. 
+
+\includepdf[pages={1,2}]{FormulairePhysiqueQ3.pdf}
+
+
+\end{document}
